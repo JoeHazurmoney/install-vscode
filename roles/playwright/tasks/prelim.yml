@@ -1,0 +1,14 @@
+---
+- name: "Install Required Playwright Package Dependencies"
+  dnf:
+    name:
+      - pip
+      - code
+    state: present
+
+- name: "Copy Python3.11 PIP Packages to Remote Host"
+  copy:
+    src: python311
+    dest: /tmp/
+    owner: root
+    group: root
