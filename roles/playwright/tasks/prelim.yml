@@ -4,14 +4,16 @@
     name:
       - pip
     state: present
+  tags:
+    - always
 
 - name: "Copy VSCode rpm and Playwright extension to target host"
   copy:
     src: "{{ item }}"
     dest: /tmp
   loop:
-    - code-1.76.2-1678817890.el7.x86_64.rpm
-    - ms-playwright.playwright-1.0.9.vsix
+    - "{{ vscode_rpm }}"
+    - "{{ playwright_extension }}"
   tags:
     - install-vscode
 
@@ -20,6 +22,11 @@
     name: /tmp/code-1.76.2-1678817890.el7.x86_64.rpm
     state: present
     disable_gpg_check: true
+  tags:
+    - install-vscode
+
+- name: "Install Playwright VSCode extension on target Host"
+  command: "code --install-extension /tmp/{{ playwright_extension }} --no-sandbox --user-data-dir=/tmp"
   tags:
     - install-vscode
 

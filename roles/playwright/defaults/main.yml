@@ -1,2 +1,4 @@
 ---
 # defaults file for playwright
+vscode_rpm: "code-1.76.2-1678817890.el7.x86_64.rpm"
+playwright_extension: "ms-playwright.playwright-1.0.9.vsix"
