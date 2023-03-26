@@ -3,12 +3,29 @@
   dnf:
     name:
       - pip
-      - code
     state: present
 
-- name: "Copy Python3.11 PIP Packages to Remote Host"
+- name: "Copy VSCode rpm and Playwright extension to target host"
   copy:
-    src: python311
-    dest: /tmp/
-    owner: root
-    group: root
+    src: "{{ item }}"
+    dest: /tmp
+  loop:
+    - code-1.76.2-1678817890.el7.x86_64.rpm
+    - ms-playwright.playwright-1.0.9.vsix
+  tags:
+    - install-vscode
+
+- name: "Install VSCode rpm on target host"
+  dnf:
+    name: /tmp/code-1.76.2-1678817890.el7.x86_64.rpm
+    state: present
+    disable_gpg_check: true
+  tags:
+    - install-vscode
+
+# - name: "Copy Python3.11 PIP Packages to Remote Host"
+#   copy:
+#     src: python311
+#     dest: /tmp/
+#     owner: root
+#     group: root
