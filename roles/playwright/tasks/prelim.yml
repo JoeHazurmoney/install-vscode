@@ -25,10 +25,12 @@
   tags:
     - install-vscode
 
-- name: "Install Playwright VSCode extension on target Host for target {{ extension_owner }} user"
-  command: "code --install-extension /tmp/{{ playwright_extension }} --no-sandbox --user-data-dir=/tmp"
+- name: "Install VSCode extensions for {{ target_user }} user"
+  command: "code --install-extension /tmp/{{ item }}" #" --no-sandbox --user-data-dir=/tmp"
   become: true
-  become_user: "{{ extension_owner }}"
+  become_user: "{{ target_user }}"
+  loop:
+    - "{{ playwright_extension }}"
   tags:
     - install-vscode
 
