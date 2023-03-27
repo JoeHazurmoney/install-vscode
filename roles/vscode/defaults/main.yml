@@ -4,5 +4,12 @@ vscode_rpm: "code-1.76.2-1678817890.el7.x86_64.rpm"
 
 target_user: taylorb
 
-# extensions
+# default of extensions to be installed
+list_of_extensions:
+  - "ms-playwright.playwright-1.0.9.vsix"
+  - "redhat.ansible-1.3.50.vsix"
+  - "redhat.vscode-yaml-1.12.2.vsix"
+
 playwright_extension: "ms-playwright.playwright-1.0.9.vsix"
+redhat_ansible_extension: "redhat.ansible-1.3.50.vsix"
+redhat_yaml_extension: "redhat.vscode-yaml-1.12.2.vsix"

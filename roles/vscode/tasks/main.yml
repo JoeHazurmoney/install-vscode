@@ -4,6 +4,20 @@
   tags:
     - always
 
-- name: Run prelim tasks
-  import_tasks: prelim.yml
+- name: Install VSCode
+  import_tasks: vscode.yml
+  tags:
+    - install-code
+    - install
 
+- name: Install Extensions
+  import_tasks: extensions.yml
+  tags:
+    - install-extensions
+    - install
+
+- name: Cleanup Files on Target Host
+  import_tasks: cleanup.yml
+  tags:
+    - cleanup
+    - install

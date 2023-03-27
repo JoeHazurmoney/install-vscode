@@ -1,0 +1,11 @@
+---
+- name: "Copy VSCode rpm to target host"
+  copy:
+    src: "{{ vscode_rpm }}"
+    dest: /tmp
+
+- name: "Install VSCode"
+  dnf:
+    name: "/tmp/{{ vscode_rpm }}"
+    state: present
+    disable_gpg_check: true

@@ -1,0 +1,12 @@
+---
+- name: "Remove VSCode rpm from target host /tmp directory"
+  file:
+    path: "/tmp/{{ vscode_rpm }}"
+    state: absent
+
+- name: "Remove VSCode extensions from target host /tmp directory"
+  file:
+    path: "/tmp/{{ item }}"
+    state: absent
+  loop:
+    - "{{ playwright_extension }}"
