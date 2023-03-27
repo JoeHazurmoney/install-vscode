@@ -4,7 +4,11 @@
     src: "extensions/{{ item }}"
     dest: /tmp
   loop:
-    - "{{ list_of_extensions }}"
+    - "{{ playwright_extension }}"
+    - "{{ redhat_ansible_extension }}"
+    - "{{ redhat_yaml_extension }}"
+  # loop:
+  #   - "{{ list_of_extensions }}"
 
 - name: "Install VSCode extensions for {{ target_user }} user"
   command: "code --install-extension /tmp/{{ item }}"
